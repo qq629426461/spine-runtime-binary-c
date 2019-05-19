@@ -854,12 +854,12 @@ spSkeletonData* spSkeletonBinary_readSkeletonData( spSkeletonBinary* self )
             skeletonData->skins[0] = defaultSkin;
         }
 
-        for (i = skeletonData->skinsCount; i < size + skeletonData->skinsCount; i++)
+        for (i = 0; i < size; i++)
 		{
 			const char *name = readString(self);
 			spSkin *skin = readSkin(self, name, &nonessential);
 			skeletonData->skins[skeletonData->skinsCount] = skin;
-			++skeletonData->skinsCount;
+			skeletonData->skinsCount++;
 		}
     }
     else
